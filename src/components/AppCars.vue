@@ -9,6 +9,7 @@
       <th>Transmission</th>
       <th>Engine</th>
       <th>Number of doors</th>
+      <th>&nbsp;</th>
       </thead>
       <tbody>
         <tr v-for= "(car,key) in cars" :key="key">
@@ -19,6 +20,7 @@
         <td> {{car.isAutomatic ? 'Automatic' : 'Manual'}} </td>
         <td> {{car.engine}} </td>
         <td> {{car.numberOfDoors}} </td>
+        <td><button class="btn btn-primary">Edit</button></td>
         </tr>
       </tbody>
     </table>
