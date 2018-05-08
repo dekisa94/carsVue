@@ -37,7 +37,6 @@ export default {
     carService.getAll()
     .then((response) => {
       this.cars = response.data
-      console.log(this.cars)
     }).catch((error) => {
       console.log(error)
     })
