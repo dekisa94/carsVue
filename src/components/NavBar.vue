@@ -3,7 +3,7 @@
   <a class="navbar-brand" href="#">CarsApp</a>
     <ul class="navbar-nav">
       <li class="nav-item">
-        <router-link class="nav-link" to="/cars">Cars</router-link>
+        <router-link class="nav-link" :to="{name: 'cars'}">Cars</router-link>
       </li>
     </ul>
 </nav>
