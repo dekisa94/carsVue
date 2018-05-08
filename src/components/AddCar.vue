@@ -39,7 +39,8 @@
         <input v-model="newCar.engine" type="radio" name="engine" value="electric"> Electric<br>
         <input v-model="newCar.engine" type="radio" name="engine" value="hybrid"> Hybrid
     </div>
-    <input type="submit" />
+    <input class="btn btn-primary" type="submit" />
+    <input type="reset" class="btn btn-danger" />
   </form>
 </div>
 </template>
