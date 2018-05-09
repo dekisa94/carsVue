@@ -42,29 +42,35 @@
     <input type="reset" class="btn btn-danger" />
     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Preview</button>
 
+    <!-- Modal start -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">       
+            <h4 class="modal-title">Current car preview</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                
+            <h5>{{this.newCar.brand}} {{this.newCar.model}}</h5>    
+            <ul>
+                <li>Year: {{this.newCar.year}}</li>
+                <li>Max speed: {{this.newCar.maxSpeed}}</li>
+                <li>Number of doors: {{this.newCar.numberOfDoors}}</li>
+                <li>Transmission {{this.isAutomatic ? 'Automatic' : 'Manual'}}</li>
+                <li>Engine: {{this.newCar.engine}}</li>
+            </ul>
 
-<div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
         </div>
-        <div class="modal-body">
-          <p>Some text in the modal.</p>
+        
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
     </div>
-  </div>
-
-
-
+    <!-- Modal end -->
   </form>
 </div>
 </template>
