@@ -10,6 +10,7 @@
       <th>Engine</th>
       <th>Number of doors</th>
       <th>&nbsp;</th>
+      <th>&nbsp;</th>
       </thead>
       <tbody>
         <tr v-for= "(car,key) in cars" :key="key">
@@ -21,6 +22,7 @@
         <td> {{car.engine}} </td>
         <td> {{car.numberOfDoors}} </td>
         <td><router-link class="btn btn-primary" :to="{ name: 'edit', params: { id: car.id } }">Edit</router-link></td>
+        <td><button class="btn btn-danger" @click="deleteCar(car.id)">Delete</button></td>
         </tr>
       </tbody>
     </table>
@@ -42,6 +44,12 @@ export default {
     }).catch((error) => {
       console.log(error)
     })
+  },
+  methods:{
+    deleteCar(id){
+      carService.delete(id)
+      window.location.reload()
+    }
   }
 }
 </script>

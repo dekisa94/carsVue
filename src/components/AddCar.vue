@@ -87,10 +87,12 @@ export default {
           if(this.$route.params.id)
           {
             carService.edit(this.$route.params.id, this.newCar)
+            window.location.href="/cars"
           }
           else
           {
             carService.add(this.newCar)
+            window.location.href="/cars"
           }
       }
   },
