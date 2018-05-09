@@ -20,7 +20,7 @@
         <td> {{car.isAutomatic ? 'Automatic' : 'Manual'}} </td>
         <td> {{car.engine}} </td>
         <td> {{car.numberOfDoors}} </td>
-        <td><button class="btn btn-primary">Edit</button></td>
+        <td><router-link class="btn btn-primary" :to="{ name: 'edit', params: { id: car.id } }">Edit</router-link></td>
         </tr>
       </tbody>
     </table>

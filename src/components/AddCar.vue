@@ -1,7 +1,7 @@
 <template>
 <div>
-<h2>Add new car</h2>
-  <form @submit.prevent="addCar">
+<h2>{{ this.$route.params.id ? 'EDIT CAR' :  'ADD NEW CAR'}}</h2>
+  <form @submit.prevent="submit">
     <div class="form-group">
         <label for="brand">Brand</label>
         <input v-model="newCar.brand" type="text" id="brand" name="brand" class="form-control" pattern=".{2,}" required title="2 characters minimum"/>
@@ -13,8 +13,7 @@
     <div class="form-group">
         <label for="year">Year</label>
         <select v-model="newCar.year" id="year" name="year" class="form-control" required>
-            <option value="1990">1990</option>
-            <option value="2018">2018</option>
+            <option v-for="year in years" :key="year">{{year}}</option>
         </select>
     </div>
     <div class="form-group">
@@ -58,7 +57,7 @@
                 <li>Year: {{this.newCar.year}}</li>
                 <li>Max speed: {{this.newCar.maxSpeed}}</li>
                 <li>Number of doors: {{this.newCar.numberOfDoors}}</li>
-                <li>Transmission {{this.isAutomatic ? 'Automatic' : 'Manual'}}</li>
+                <li>Transmission {{this.newCar.isAutomatic ? 'Automatic' : 'Manual'}}</li>
                 <li>Engine: {{this.newCar.engine}}</li>
             </ul>
 
@@ -84,8 +83,35 @@ export default {
         }
     },
   methods:{
-      addCar(newCar){
-          carService.add(this.newCar)
+      submit(){
+          if(this.$route.params.id)
+          {
+            carService.edit(this.$route.params.id, this.newCar)
+          }
+          else
+          {
+            carService.add(this.newCar)
+          }
+      }
+  },
+  created(){
+      if(this.$route.params.id){
+        carService.get(this.$route.params.id)
+        .then((response) => {
+            this.newCar=response.data
+        }).catch((error) => {
+            console.log(error)
+        })
+      }
+      
+  },
+  computed:{
+      years(){
+          let years=[]
+          for(let i=1990; i<=2018; i++){
+              years.push(i);
+          }
+          return years;
       }
   }
 }
